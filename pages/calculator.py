@@ -9,10 +9,13 @@ region=st.selectbox("Select",['None','Urban','Rural'])
 
 if region=='Urban':
     val = st.number_input('Electricity used per month(KWh)', value = 0)
+    val=max(0,val)
     electricity=st.slider('',0,100,value=val,key='electricity')
+    val=max(0,val)
     gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
     if gas_connection=='Gas Cylinder':
         gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=None)
+        gas_cylinder=max(0,gas_cylinder)
     elif gas_connection=='Gas Pipeline':
         gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=None)
 
@@ -22,7 +25,7 @@ if region=='Urban':
         if air_travel=='Domestic':
             domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=None)
         if air_travel=='International':
-            domestic=st.number_input("No. of one-way international flights per month",step=1,value=None)
+            international=st.number_input("No. of one-way international flights per month",step=1,value=None)
     if "Train" in transport:
         train_travel=st.selectbox("Time traveled per month in train",['Less than 12hrs','between 12 and 24 hrs','More than 24 hrs'])
         
@@ -36,7 +39,9 @@ if region=='Urban':
 
     food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
     val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
+    val1=max(val1,0)
     waste=st.slider('',0,100,value=val1,key='waste')
+    val1=max(val1,0)
     mealperday=st.number_input("Number of Meals per Day",step=1,value=None)
     renewable=st.selectbox("Any type of renewable energy generated",["No","Yes"])
     if renewable=="Yes":
@@ -47,7 +52,9 @@ if region=='Urban':
 
 elif region=='Rural':
     val = st.number_input('Electricity used per month(KWh)', value = 0)
+    val=max(0,val)
     electricity=st.slider('',0,100,value=val,key='electricity')
+    val=max(0,val)
     gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
     if gas_connection=='Gas Cylinder':
         gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=None)
@@ -55,7 +62,8 @@ elif region=='Rural':
         gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=None)
         
     val2 = st.number_input('Wood used weekly(kg)', value = 0)
-    ewood=st.slider('',0,100,value=val2,key='wood')
+    val2=st.slider('',0,100,value=val2,key='wood')
+    val2=max(val2,0)
 
     transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
     if "Air Travel" in transport:
@@ -63,7 +71,7 @@ elif region=='Rural':
         if "Domestic" in air_travel:
             domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=None)
         if "International" in air_travel:
-            domestic=st.number_input("No. of one-way international flights per month",step=1,value=None)
+            international=st.number_input("No. of one-way international flights per month",step=1,value=None)
     if "Train" in transport:
         train_travel=st.selectbox("Time traveled per month in train",['Less than 12hrs','between 12 and 24 hrs','More than 24 hrs'])
         
