@@ -6,8 +6,10 @@ import pandas as pd
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-data = conn.read(worksheet="Sheet2",usecols=list(range(4)),  ttl=5)
+data = conn.read(worksheet="Person",usecols=list(range(4)),  ttl=5)
 data = data.dropna(how="all")
+
+st.title("Carbon Footprint Calculator")
 
 with st.form(key='personal_form'):
     person_name=st.text_input(label='Name*')
@@ -38,7 +40,7 @@ with st.form(key='personal_form'):
 
             updated_df=pd.concat([data,person_data], ignore_index=True)
 
-            conn.update(worksheet="Sheet2",data=updated_df)
+            conn.update(worksheet="Person",data=updated_df)
 
             st.success("All details are successfully submited!")
 
