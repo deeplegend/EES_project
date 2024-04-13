@@ -1,5 +1,20 @@
 import streamlit as st
 
+air_travel=None
+amount_renewable=0
+gas_pipeline=0
+domestic=0
+gas_cylinder=0
+international=0
+private_travel=None
+mileage=0
+age=0
+total_distance=0
+train_travel=0
+bus_travel=0
+mealperday=0
+
+
 st.set_page_config(layout="wide", page_title="Person Carbon Calculator")
                    
 st.title(f"Welcome,")
@@ -7,94 +22,90 @@ st.title("Personal Carbon Calculator App")
 
 region=st.selectbox("Select",['None','Urban','Rural'])
 
-if region=='Urban':
-    val = st.number_input('Electricity used per month(KWh)', value = 0)
-    val=max(0,val)
-    electricity=st.slider('',0,100,value=val,key='electricity')
-    val=max(0,val)
-    gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
-    if gas_connection=='Gas Cylinder':
-        gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=None)
-        gas_cylinder=max(0,gas_cylinder)
-    elif gas_connection=='Gas Pipeline':
-        gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=None)
+val = st.number_input('Electricity used per month(KWh)', value = 0,min_value=0,max_value=1000)
+electricity=st.slider('',0,1000,value=val,key='electricity')
+electricity_bill=st.file_uploader("Upload a clear image of Electricity Bill")
+gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
+if gas_connection=='Gas Cylinder':
+    gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=None)   
+    gas_cylinder=max(0,gas_cylinder)
+elif gas_connection=='Gas Pipeline':
+    gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=None)
 
-    transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
-    if "Air Travel" in transport:
-        air_travel=st.selectbox("Type of air travel",['None','Domestic','International'])
-        if air_travel=='Domestic':
-            domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=None)
-        if air_travel=='International':
-            international=st.number_input("No. of one-way international flights per month",step=1,value=None)
-    if "Train" in transport:
-        train_travel=st.selectbox("Time traveled per month in train",['Less than 12hrs','between 12 and 24 hrs','More than 24 hrs'])
+val2 = st.number_input('Wood used weekly(kg)', value = 0)
+val2=st.slider('',0,100,value=val2,key='wood')
+val2=max(val2,0)
+
+transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
+if "Air Travel" in transport:
+    air_travel=st.selectbox("Type of air travel",['None','Domestic','International'])
+if air_travel=='Domestic':
+    domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=None)
+if air_travel=='International':
+    international=st.number_input("No. of one-way international flights per month",step=1,value=None)
+if "Train" in transport:
+    train_travel=st.selectbox("Time traveled per month in train",['Less than 12hrs','between 12 and 24 hrs','More than 24 hrs'])
         
-    if "Bus" in transport:
-        bus_travel=st.number_input('Distance traveled by Bus(Km) weekly',step=1,value=None)
-    if "Private Vehicle" in transport:  
-        private_travel=st.selectbox("Fuel Type",['Petrol','Diesel'])
-        mileage=st.number_input('Mileage',step=1,value=None)
-        age=st.number_input('How old is your vehicle?',step=1,value=None)
-        total_distance=st.number_input('Distance driven per day',step=1,value=None)
+if "Bus" in transport:
+    bus_travel=st.number_input('Distance traveled by Bus(Km) weekly',step=1,value=None)
+if "Private Vehicle" in transport:  
+    private_travel=st.selectbox("Fuel Type",['Petrol','Diesel'])
+mileage=st.number_input('Mileage',step=1,value=None)
+age=st.number_input('How old is your vehicle?',step=1,value=None)
+total_distance=st.number_input('Distance driven per day',step=1,value=None)
+PUC=st.file_uploader("Upload a clear image of PUC")
 
-    food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
-    val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
-    val1=max(val1,0)
-    waste=st.slider('',0,100,value=val1,key='waste')
-    val1=max(val1,0)
-    mealperday=st.number_input("Number of Meals per Day",step=1,value=None)
-    renewable=st.selectbox("Any type of renewable energy generated",["No","Yes"])
-    if renewable=="Yes":
-        amount_renewable=st.number_input("Amount of Energy Renewed(KWh)",step=1,value=None)
+food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
+val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
+val1=max(val1,0)
+waste=st.slider('',0,100,value=val1,key='waste')
+val1=max(val1,0)
+mealperday=st.number_input("Number of Meals per Day",step=1,value=0)
+renewable=st.selectbox("Any type of renewable energy generated",["No","Yes"])
+if renewable=="Yes":
+    amount_renewable=st.number_input("Amount of Energy Renewed(KWh)",step=1,value=None)
+
+if(val>0):
+    val=(val*0.82-(float)(amount_renewable))*12
+if(gas_connection!=None):
+    if(gas_cylinder>0):
+        gas_cylinder=gas_cylinder*100*12
+    if(gas_pipeline>0):
+        gas_pipeline=gas_pipeline*22.73*12
+if(domestic>0):
+    domestic=domestic*348.5*12
+if(international>0):
+    international=international*532.7*12
+if(train_travel>0):
+    train_travel=train_travel*2.49*12
+if(bus_travel>0):
+    bus_travel=bus_travel*0.1*52
+if(private_travel!=None):
+    if(private_travel=="Petrol"):
+        total_distance=total_distance*mileage*2.2*365
+    if(private_travel=="Diesel"):
+        total_distance=total_distance*mileage*2.6*365
+if(val2>0):
+    val2=val2*1.6*52
+if(waste>0):
+    waste=waste*1.49*52
+if(food_type!=None):
+    if(food_type=="Vegeterian"):
+        mealperday=mealperday*0.776*365
+    if(food_type=="Non-Vegeterian"):
+        mealperday=mealperday*1.552*365
 
 
-    
-
-elif region=='Rural':
-    val = st.number_input('Electricity used per month(KWh)', value = 0)
-    val=max(0,val)
-    electricity=st.slider('',0,100,value=val,key='electricity')
-    val=max(0,val)
-    gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
-    if gas_connection=='Gas Cylinder':
-        gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=None)
-    elif gas_connection=='Gas Pipeline':
-        gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=None)
-        
-    val2 = st.number_input('Wood used weekly(kg)', value = 0)
-    val2=st.slider('',0,100,value=val2,key='wood')
-    val2=max(val2,0)
-
-    transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
-    if "Air Travel" in transport:
-        air_travel=st.multiselect("Type of air travel",['None','Domestic','International'])
-        if "Domestic" in air_travel:
-            domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=None)
-        if "International" in air_travel:
-            international=st.number_input("No. of one-way international flights per month",step=1,value=None)
-    if "Train" in transport:
-        train_travel=st.selectbox("Time traveled per month in train",['Less than 12hrs','between 12 and 24 hrs','More than 24 hrs'])
-        
-    if "Bus" in transport:
-        bus_travel=st.number_input('Distance traveled by Bus(Km) weekly',step=1,value=None)
-    if "Private Vehicle" in transport:  
-        private_travel=st.selectbox("Fuel Type",['Petrol','Diesel'])
-        mileage=st.number_input('Mileage',step=1,value=None)
-        age=st.number_input('How old is your vehicle?',step=1,value=None)
-        total_distance=st.number_input('Distance driven per day',step=1,value=None)
-
-    food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
-    val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
-    waste=st.slider('',0,100,value=val1,key='waste')
-    mealperday=st.number_input("Number of Meals per Day",step=1,value=None)
-    renewable=st.selectbox("Any type of renewable energy generated",["No","yes"])
-    if renewable=="yes":
-        amount_renewable=st.number_input("Amount of Energy Renewed(KWh)",step=1,value=None)
 
 submit_button=st.button("Calculate the CO₂ Emission")
 
+
+
 if submit_button:
     st.header("Results")
+
+    st.info(f"Electricity : {val}")
+    st.write(round(val,2)/1000)
     
 
 # def get_query_params():
