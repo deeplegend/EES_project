@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 st.set_page_config(page_title="Carbon Footprint",page_icon=":footprints:",layout="wide")
 #storing images
-img_contact_form=Image.open("Images\Screenshot 2024-04-13 224751.png")
+img_contact_form=Image.open("EES_project/Images/Screenshot 2024-04-13 224751.png")
 
 with st.container():
     st.header("Understanding Carbon Footprint :footprints:")
