@@ -52,13 +52,13 @@ with st.container():
                 """<a href="https://www.linkedin.com/in/deep-patel-5b3912207/">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col3:
             st.markdown(
                 """<a href="https://github.com/deeplegend">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col4:
             st.write('')
     with Devu_column:
@@ -71,13 +71,13 @@ with st.container():
                 """<a href="https://www.linkedin.com/in/devu-gupta007/">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col3:
             st.markdown(
                 """<a href="https://github.com/codealpha07">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col4:
             st.write('')
     with Khoshang_column:
@@ -90,13 +90,13 @@ with st.container():
                 """<a href="https://www.linkedin.com/in/khoshang/">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col3:
             st.markdown(
                 """<a href="https://github.com/khoshang-k">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col4:
             st.write('')
     with Kunal_column:
@@ -109,13 +109,13 @@ with st.container():
                 """<a href="https://www.linkedin.com/in/kunal-agrawal-886b08285/">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col3:
             st.markdown(
                 """<a href="https://github.com/Kunal-8799">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
+                base64.b64encode(open("Images/Github_icon.png", "rb").read()).decode()),unsafe_allow_html=True,)
         with col4:
             st.write('')
     st.write("---")
