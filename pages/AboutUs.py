@@ -6,7 +6,7 @@ st.set_page_config(page_title="About Us",layout="wide")
 #calling all images
 image_14=Image.open("Images/Ankit Baidsen.png")
 image_29=Image.open("Images/Deep Patel.png")
-image_30=Image.open("Images/Devu Gupta.png")
+image_30=Image.open("Images/Devu Gupta2.png")
 image_42=Image.open("Images/Khoshang Kashyap.png")
 image_46=Image.open("Images/Kunal Agrawal.png")
 
