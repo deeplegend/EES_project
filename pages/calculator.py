@@ -25,7 +25,7 @@ st.title("Personal Carbon Calculator App")
 
 region=st.selectbox("Select",['Urban','Rural'])
 col3, col4=st.columns(2)
-with col3:
+# with col3:
     st.subheader("⚡Electricity used per month(KWh)")
     val = st.number_input('',value = 0,min_value=0,max_value=1000)
     electricity=st.slider('',0,1000,value=val,key='electricity')
@@ -58,7 +58,7 @@ with col3:
        total_distance=st.number_input('Distance driven per day',step=1,value=0)
        PUC=st.file_uploader("Upload a clear image of PUC")
 
-with col4:
+# with col4:
     st.subheader("🗑️Waste Generated")
     val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
     val1=max(val1,0)
