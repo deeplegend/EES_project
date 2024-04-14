@@ -33,7 +33,7 @@ with st.container():
                 """<a href="https://www.linkedin.com/in/ankit-baidsen-202106290/">
                 <img src="data:image/png;base64,{}" width="20">
                 </a>""".format(
-                base64.b64encode(open("Images\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=False)
+                base64.b64encode(open("Images\\LinkedIn_icon.png", "rb").read()).decode()),unsafe_allow_html=False)
         with col3:
             st.markdown(
                 """<a href="https://github.com/neetance">
