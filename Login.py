@@ -10,6 +10,7 @@ data = conn.read(worksheet="Person",usecols=list(range(4)),  ttl=5)
 data = data.dropna(how="all")
 
 st.title("Carbon Footprint Calculator")
+st.subheader("Welcome to our Carbon Footprint Calculator")
 
 with st.form(key='personal_form'):
     person_name=st.text_input(label='Name*')
