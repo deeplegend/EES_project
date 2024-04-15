@@ -24,58 +24,56 @@ st.title(f"Welcome,")
 st.title("Personal Carbon Calculator App")
 
 region=st.selectbox("Select",['Urban','Rural'])
-col3, col4=st.columns(2)
-with col3:
-    st.subheader("⚡Electricity used per month(KWh)")
-    val = st.number_input('',value = 0,min_value=0,max_value=1000)
-    electricity=st.slider('',0,1000,value=val,key='electricity')
-    electricity_bill=st.file_uploader("Upload a clear image of Electricity Bill")
-    st.subheader('')
-    st.subheader("🧯Gas Connection")
-    gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
-    if gas_connection=='Gas Cylinder':
-        gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=0)   
-    elif gas_connection=='Gas Pipeline':
-        gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=0)
-    st.subheader('')
-    st.subheader("🚚Transport")
-    transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
-    if "Air Travel" in transport:
-       air_travel=st.selectbox("Type of air travel",['None','Domestic','International'])
-    if air_travel=='Domestic':
-        domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=0)
-    if air_travel=='International':
-        international=st.number_input("No. of one-way international flights per month",step=1,value=0)
-    if "Train" in transport:
+st.subheader("⚡Electricity used per month(KWh)")
+val = st.number_input('',value = 0,min_value=0,max_value=1000)
+electricity=st.slider('',0,1000,value=val,key='electricity')
+electricity_bill=st.file_uploader("Upload a clear image of Electricity Bill")
+
+st.subheader('')
+st.subheader("🧯Gas Connection")
+gas_connection=st.selectbox("Type of Gas Connection",['None','Gas Cylinder','Gas Pipeline'])
+if gas_connection=='Gas Cylinder':
+     gas_cylinder=st.number_input('Number of gas cylinders used in a month',step=1,value=0)   
+elif gas_connection=='Gas Pipeline':
+     gas_pipeline=st.number_input('Gas Usage per month(cubic metre)',step=1,value=0)
+st.subheader('')
+st.subheader("🚚Transport")
+transport=st.multiselect("Transport (one or more)",['Air Travel','Train','Bus','Private Vehicle'])
+if "Air Travel" in transport:
+    air_travel=st.selectbox("Type of air travel",['None','Domestic','International'])
+if air_travel=='Domestic':
+    domestic=st.number_input("No. of one-way domestic flights per month",step=1,value=0)
+if air_travel=='International':
+    international=st.number_input("No. of one-way international flights per month",step=1,value=0)
+if "Train" in transport:
         train_travel=st.number_input("Distance traveled by train in a week",value=0)
         
-    if "Bus" in transport:
-       bus_travel=st.number_input('Distance traveled by Bus(Km) weekly',step=1,value=0)
-    if "Private Vehicle" in transport:  
+if "Bus" in transport:
+    bus_travel=st.number_input('Distance traveled by Bus(Km) weekly',step=1,value=0)
+if "Private Vehicle" in transport:  
        private_travel=st.selectbox("Fuel Type",['Petrol','Diesel'])
        mileage=st.number_input('Mileage',step=1,value=0)
        age=st.number_input('How old is your vehicle?',step=1,value=0)
        total_distance=st.number_input('Distance driven per day',step=1,value=0)
        PUC=st.file_uploader("Upload a clear image of PUC")
 
-with col4:
-    st.subheader("🗑️Waste Generated")
-    val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
-    val1=max(val1,0)
-    waste=st.slider('',0,100,value=val1,key='waste')
-    val1=max(val1,0)
-    st.subheader('')
-    st.subheader("🍽️Meal")
-    food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
-    mealperday=st.number_input("Number of Meals per Day",step=1,value=0)
-    st.subheader('')
-    st.subheader("♻️Natural Resources")
-    renewable=st.selectbox("Any type of renewable energy generated",["No","Yes"])
-    if renewable=="Yes":
-        amount_renewable=st.number_input("Amount of Energy Renewed(KWh)",step=1,value=0)
-    val2 = st.number_input('Wood used weekly(kg)', value = 0)
-    val2=st.slider('',0,100,value=val2,key='wood')
-    val2=max(val2,0)
+st.subheader("🗑️Waste Generated")
+val1 = st.number_input('Waste Generated(Kg) per week', value = 0)
+val1=max(val1,0)
+waste=st.slider('',0,100,value=val1,key='waste')
+val1=max(val1,0)
+st.subheader('')
+st.subheader("🍽️Meal")
+food_type=st.selectbox("Meal preference",['Vegeterian','Non-Vegeterian'])
+mealperday=st.number_input("Number of Meals per Day",step=1,value=0)
+st.subheader('')
+st.subheader("♻️Natural Resources")
+renewable=st.selectbox("Any type of renewable energy generated",["No","Yes"])
+if renewable=="Yes":
+    amount_renewable=st.number_input("Amount of Energy Renewed(KWh)",step=1,value=0)
+val2 = st.number_input('Wood used weekly(kg)', value = 0)
+val2=st.slider('',0,100,value=val2,key='wood')
+val2=max(val2,0)
 
 if(val>0):
     val=round(((val*0.82-(float)(amount_renewable))*12)/1000,2)
