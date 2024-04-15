@@ -157,7 +157,7 @@ if submit_button:
      )
         updated_urban=pd.concat([data,urban_data],ignore_index=True)
         conn.update(worksheet="Urban",data=updated_urban)
-        st.success("All Details are recorded in our records, We will tell you if you eligible for rewards in few days")
+        st.success("All Details are recorded in our records, We will tell you if you are eligible for rewards in few days")
         st.write("To know how to reduce your carbon emission [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#a70407a6)")
         st.write("To know about carbon emission in India [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#carbon-emissions-in-india)")
     if(region=='Rural'):
@@ -187,7 +187,7 @@ if submit_button:
         )
         updated_rural=pd.concat([data,rural_data],ignore_index=True)
         conn.update(worksheet="Rural",data=updated_rural)
-        st.success("All Details are recorded in our records, We will tell you if you eligible for rewards in few days")
+        st.success("All Details are recorded in our records, We will tell you if you are eligible for rewards in few days")
         st.write("To know how to reduce your carbon emission [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#a70407a6)")
         st.write("To know about carbon emission in India [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#carbon-emissions-in-india)")
 
