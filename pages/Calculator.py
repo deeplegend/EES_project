@@ -127,7 +127,7 @@ if submit_button:
         st.info(f"Waste generated : {waste} tonnes of CO₂ produced")
         st.info(f"Food : {mealperday} tonnes of CO₂ produced")
     if(age>15):
-        st.warning("The age of vehicle is above 15, Please check the local laws if driving this vehicle is legal or not")
+        st.error("The age of vehicle is above 15, Please check the local laws if driving this vehicle is legal or not")
     st.subheader("Your Total Carbon Emission(in tonnes of CO₂ produced)")
     st.info(f"Your Total Carbon Emission: {total_emmision} tonnes of CO₂ produced")
     if(region=='Urban'):
