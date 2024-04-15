@@ -26,9 +26,6 @@ with st.form(key='personal_form'):
         elif data["Name"].str.contains(person_name).any():
             st.warning("Another person with same name already exists.")
             st.stop()
-        elif data["Aadhar"].str.contains(aadhar).any():
-            st.warning("Another person with same Aadhar No already exists.")
-            st.stop()
         else:
             person_data=pd.DataFrame(
                 [
