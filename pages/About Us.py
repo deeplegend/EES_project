@@ -14,7 +14,7 @@ with st.container():
     st.header("About the project")
     st.write("The \"Carbon Footprint Calculator\" project is a web-based application designed to empower individuals to track and manage their carbon footprint in their daily lives. With growing concerns about climate change and environmental sustainability, there is an increasing need for tools that enable individuals to understand the impact of their actions on the planet. This project aims to address this need by providing a user-friendly platform for calculating and visualizing personal carbon emissions.")
     st.write("The core functionality of the \"Carbon Footprint Calculator\" revolves around its ability to calculate carbon emissions based on user inputs. Through a simple and intuitive user interface, users can input data such as their daily commute distance, monthly electricity consumption, meals per day, and waste generation. These inputs are then processed using predefined emission factors for different activities and regions to calculate the user's total carbon footprint.")
-    st.write("One of the key features of the project is its integration with Google Sheets for data storage and management. By allowing users to submit their personal details through a form embedded in the application, the project facilitates the collection of data for analysis and reporting.")
+    st.write("One of the key features of the website is its integration with Google Sheets for data storage and management. By allowing users to submit their personal details through a form embedded in the application, the project facilitates the collection of data for analysis and reporting.")
     st.write("---")
 #with st.container():
 #    st.header("About Us")
