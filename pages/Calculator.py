@@ -158,6 +158,8 @@ if submit_button:
         updated_urban=pd.concat([data,urban_data],ignore_index=True)
         conn.update(worksheet="Urban",data=updated_urban)
         st.success("All Details are recorded in our records, We will tell you if you eligible for rewards in few days")
+        st.write("To know how to reduce your carbon emission [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#a70407a6)")
+        st.write("To know about carbon emission in India [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#carbon-emissions-in-india)")
     if(region=='Rural'):
         if(total_emmision>0.85):
             st.warning(f"Your average CO₂ consumption is {round(((total_emmision-0.85)/0.85)*100,2)}% above Average")
@@ -186,6 +188,8 @@ if submit_button:
         updated_rural=pd.concat([data,rural_data],ignore_index=True)
         conn.update(worksheet="Rural",data=updated_rural)
         st.success("All Details are recorded in our records, We will tell you if you eligible for rewards in few days")
+        st.write("To know how to reduce your carbon emission [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#a70407a6)")
+        st.write("To know about carbon emission in India [Click Here](https://carbon-calculator-web.streamlit.app/~/+/About#carbon-emissions-in-india)")
 
     #upload data
     
